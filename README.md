@@ -174,3 +174,6 @@ nano ~/kube-cluster/kube-dependencies.yml
         creates: pod_network_setup.txt
         
   ```
+```sh
+kubectl get nodes
+ ```
