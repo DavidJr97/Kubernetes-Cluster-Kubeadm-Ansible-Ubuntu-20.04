@@ -26,10 +26,6 @@ nano ~/kube-cluster/hosts
 ```
 
 ```sh
-ansible -i hosts -m ping all
-```
-
-```sh
 [control_plane]
 control1 ansible_host=control_plane_ip ansible_user=root 
 
@@ -41,4 +37,6 @@ worker2 ansible_host=worker_2_ip ansible_user=root
 ansible_python_interpreter=/usr/bin/python3
 ```
 
-## Inventory config
+```sh
+ansible -i hosts -m ping all
+```
