@@ -174,6 +174,8 @@ nano ~/kube-cluster/kube-dependencies.yml
         creates: pod_network_setup.txt
         
   ```
+  Test the cluster
+  
 ```sh
 kubectl get nodes
  ```
