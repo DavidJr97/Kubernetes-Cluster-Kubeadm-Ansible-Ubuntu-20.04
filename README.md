@@ -151,19 +151,23 @@ nano ~/kube-cluster/kube-dependencies.yml
 
     - name: create .kube directory
       become: yes
+      become_user: vagrant
       file:
         path: $HOME/.kube
         state: directory
         mode: 0755
 
     - name: copy admin.conf to user's kube config
+      become: yes
       copy:
         src: /etc/kubernetes/admin.conf
-        dest: /root/.kube/config
+        dest: /home/vagrant/.kube/config
         remote_src: yes
+        owner: vagrant
 
     - name: install Pod network
       become: yes
+      become_user: vagrant
       shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml >> pod_network_setup.txt
       args:
         chdir: $HOME
