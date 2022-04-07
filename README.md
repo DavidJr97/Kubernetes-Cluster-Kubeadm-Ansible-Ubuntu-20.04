@@ -15,6 +15,12 @@ We need to create a Inventory File
 
 _We need to test our inventory with a ping, before to run the next steps._
 
+For this practice our inventory name will be /hosts
+
+```sh
+ansible -i hosts -m ping all
+```
+
 ```sh
 [control_plane]
 control1 ansible_host=control_plane_ip ansible_user=root 
