@@ -11,11 +11,19 @@
 ## Inventory config
 
 
-We need to create a Inventory File 
+We need to create a Inventory File in our local machine 
 
 _We need to test our inventory with a ping, before to run the next steps._
 
-For this practice our inventory name will be /hosts
+We need to create a directory named ~/kube-cluster in home directory of your local machine and cd into it:
+
+```sh
+mkdir ~/kube-cluster/hosts
+```
+
+```sh
+nano ~/kube-cluster/hosts
+```
 
 ```sh
 ansible -i hosts -m ping all
