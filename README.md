@@ -151,7 +151,6 @@ nano ~/kube-cluster/kube-dependencies.yml
 
     - name: create .kube directory
       become: yes
-      become_user: ubuntu
       file:
         path: $HOME/.kube
         state: directory
@@ -160,13 +159,11 @@ nano ~/kube-cluster/kube-dependencies.yml
     - name: copy admin.conf to user's kube config
       copy:
         src: /etc/kubernetes/admin.conf
-        dest: /home/ubuntu/.kube/config
+        dest: /root/.kube/config
         remote_src: yes
-        owner: ubuntu
 
     - name: install Pod network
       become: yes
-      become_user: ubuntu
       shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml >> pod_network_setup.txt
       args:
         chdir: $HOME
