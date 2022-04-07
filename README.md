@@ -8,6 +8,36 @@
 - Ansible installed on your local machine.  ----> Note: `LOCAL MACHINE MEANS YOUR OWN COMPUTER NOT THE 3 SERVERS `
 
 
+
+
+Disable Swap and Enable Kernel modules
+
+```sh
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+sudo swapoff -a
+```
+
+Next we need to enable kernel modules and configure sysctl.
+
+To enable kernel modules
+```sh
+sudo modprobe overlay
+sudo modprobe br_netfilter
+```
+Add some settings to sysctl
+
+```sh
+sudo tee /etc/sysctl.d/kubernetes.conf<<EOF
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.ipv4.ip_forward = 1
+EOF
+```
+Reload sysctl
+
+```sh
+sudo sysctl --system
+```
 ## Inventory config
 
 
